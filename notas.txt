@@ -1,0 +1,40 @@
+
+
+# PRECISAMOS IMPORTAR A CLASSE DE ESPÉCIE (PODEMOS TROCAR O NOME CASO VCS ACHEM PERTINENTE)
+
+
+# SEGUINDO O DOCUMENTO DA AULA DE HOJE, DEI UMA ORGANIZADA NO QUE A GENTE PRECISA FAZER:
+    # 1-  Inicializar a população
+    # 2-  Selecionar Reprodutores 
+    # 3- Cruzar selecionados
+    # 4- Mutar resultantes 
+    # 5- Atualizar a população (Pensei em ter uma lista de indivíduos na classe Espécie )
+    # 6- Parar a execução? (Podemos colocar um While True para parar quando o usuário não quiser mais gerar nenhuma reprodução)
+    # 7- Acho interessante a gente definir na parte de geração de indivíduo uma lógica para deixar o cruzamento apenas entre Macho e Femea e, não sei se seria interessante, implementar algumas espécies base para o programa realizar a reprodução
+
+# Colocar um limite na taxa de tamanho da população para evitar que o sistema sobrecarregue?
+# Adicionar um try except para tratar erros
+
+# Programar a extinção?
+
+
+
+
+
+# Esta parte do código gera um novo indivíduo a partir de um tamanho
+
+
+
+
+# Fazer isso rodar para cada característica que temos e depois fazer aquela análise com dicionários?
+
+
+
+
+
+
+# O zip junta os elementos de duas listas e as organiza em tuplas dentro de uma lista, nesse caso pegamos i,j para percorrer os valores das tuplas e assim pegar os maiores para selecionar a "melhor característica"
+
+
+
+
