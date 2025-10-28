@@ -11,6 +11,9 @@ tamanhoPopulacao = 10
 tamanhoCaracteristica1 = 5
 valorTaxaMutacao = 90 
 valorTaxaSelecao = 80
+contadorReproducaoFalha = 0
+popnewage = []
+novaGeracao = []
 
 def geracaoIndividuo():
     individuo = Especie("Pan Paniscus",choice(["M","F"])) 
@@ -85,11 +88,21 @@ while True:
             # Código da opção 3
 
         elif resp == 4:
-            populacao = [geracaoIndividuo() for i in range(0, tamanhoPopulacao-1)]
 
-            contadorReproducaoFalha = 0
+            tamanhoPopulacao = int(input("Qual será o tamanho da população inicial?"))
+            tamanhoPopNewAge = int(input("Quantos indivíduos poderão fazer parte dos selecionados?"))
+
+            if tamanhoPopNewAge > tamanhoPopulacao:
+                print("ERRO! O NÚMERO DE INDIVÍDUOS SELECIONADOS NÃO PODE SER MAIOR QUE A POPULAÇÃO TOTAL")
+                break
             
-            popnewage = []
+
+
+            populacao = [geracaoIndividuo() for i in range(0, tamanhoPopulacao)]
+
+            
+            
+            
             for i in range(0, len(populacao) - 1):
                 par1 = populacao[i]
                 par2 = populacao[i+1]
@@ -101,7 +114,7 @@ while True:
 
 
                     
-                    if sum(ind3.caracteristica1) >= avaliacaoPopulacao(populacao):
+                    if sum(ind3.caracteristica1) >= avaliacaoPopulacao(populacao) and len(popnewage) < tamanhoPopNewAge:
                         popnewage.append(ind3)
 
                 else: contadorReproducaoFalha += 1
@@ -116,13 +129,20 @@ while True:
                         2 - Mostrar número de reproduções falhas
                         3 - Mostrar o número de mutações genéticas que ocorreram em toda a população
                         4 - Mostrar a população inicial
+                        6- Taxa de manutenção genética
                         5- Sair                     """))
                     
                         if resp2 == 1:
-                            for individuo in popnewage:
-                                print(f"{individuo.nomeCientifico} - {individuo.sexo}")
-                                print(f"Característica 1: {individuo.caracteristica1}")
-                                print(f"Por isso, a cor do seu olho é {c1[individuo.caracteristica1[0]]}")
+                            
+                            if len(popnewage) == 0:
+                                print("Nenhum indivíduo sobreviveu")
+
+                            else:
+
+                                for individuo in popnewage:
+                                    print(f"{individuo.nomeCientifico} - {individuo.sexo}")
+                                    print(f"Característica 1: {individuo.caracteristica1}")
+                                    print(f"Por isso, a cor do seu olho é {c1[individuo.caracteristica1[0]]}")
 
                                 # Adicionar limpa tela e etc
                         
@@ -144,6 +164,22 @@ while True:
                         elif resp2 == 5:
                             print("Saindo...")
                             break
+
+                        elif resp2 == 6:
+                            
+                            genes_mantidos = 0
+                            genes_totais = 0
+                            for ind in popnewage:
+                                for i in range(tamanhoCaracteristica1):
+                                    if any(ind.caracteristica1[i] == p.caracteristica1[i] for p in populacao):
+                                        genes_mantidos += 1
+                                    genes_totais += 1
+
+                            if genes_totais > 0:
+                                porcentagem = (genes_mantidos / genes_totais) * 100
+                                print(f"{porcentagem:.2f}% dos genes se mantiveram entre as gerações.")
+                            else:
+                                print("Nenhum gene foi mantido.")
 
                         else:
                             print("Erro, opção inválida")
