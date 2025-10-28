@@ -7,5 +7,7 @@ class Especie:
         self.nomeCientifico = nomeCientifico  
         self.sexo = sexo
         self.caracteristica1 = [] #Cor dos olhos
+        self.caracteristica2 = [] #Comportamento
+        self.caracteristica3 = [] #Cor do pelo
     
     
