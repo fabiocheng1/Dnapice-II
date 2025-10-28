@@ -314,25 +314,62 @@ while True:
                             print("Saindo...")
                             break
 
-                        elif resp2 == 6:
+                        
                             
-                            genes_mantidos = 0
-                            genes_totais = 0
-                            for ind in popnewage:
-
-                                
-                                # ALTERAR COM A LÓGICA DE MAIS CARACTERÍSTICAS
-
-                                for i in range(tamanhoCaracteristica1):
-                                    if any(ind.caracteristica1[i] == p.caracteristica1[i] for p in populacao):
-                                        genes_mantidos += 1
-                                    genes_totais += 1
-
-                            if genes_totais > 0:
-                                porcentagem = (genes_mantidos / genes_totais) * 100
-                                print(f"{porcentagem:.2f}% dos genes se mantiveram entre as gerações.")
+                        elif resp2 == 6:
+    
+                            if not popnewage or not populacao:
+                                print("Erro: É necessário ter uma população e uma nova geração para calcular a taxa genética.")
                             else:
-                                print("Nenhum gene foi mantido.")
+                                genes_mantidos1 = genes_totais1 = 0
+                                genes_mantidos2 = genes_totais2 = 0
+                                genes_mantidos3 = genes_totais3 = 0
+
+                                # Compara indivíduo a indivíduo entre as gerações
+                                for i in range(min(len(popnewage), len(populacao))):
+                                    filho = popnewage[i]
+                                    pai = populacao[i]  # Supondo correspondência de índice (mesmo "número" de indivíduo)
+
+                                    # Característica 1
+                                    for g1, g2 in zip(filho.caracteristica1, pai.caracteristica1):
+                                        genes_totais1 += 1
+                                        if g1 == g2:
+                                            genes_mantidos1 += 1
+
+                                    # Característica 2
+                                    for g1, g2 in zip(filho.caracteristica2, pai.caracteristica2):
+                                        genes_totais2 += 1
+                                        if g1 == g2:
+                                            genes_mantidos2 += 1
+
+                                    # Característica 3
+                                    for g1, g2 in zip(filho.caracteristica3, pai.caracteristica3):
+                                        genes_totais3 += 1
+                                        if g1 == g2:
+                                            genes_mantidos3 += 1
+
+                                # Exibição dos resultados
+                                if genes_totais1 > 0:
+                                    porcentagem = (genes_mantidos1 / genes_totais1) * 100
+                                    print(f"{porcentagem:.2f}% dos genes se mantiveram entre as gerações na característica 1.")
+                                else:
+                                    print("Nenhum gene foi mantido na característica 1.")
+
+                                if genes_totais2 > 0:
+                                    porcentagem = (genes_mantidos2 / genes_totais2) * 100
+                                    print(f"{porcentagem:.2f}% dos genes se mantiveram entre as gerações na característica 2.")
+                                else:
+                                    print("Nenhum gene foi mantido na característica 2.")
+
+                                if genes_totais3 > 0:
+                                    porcentagem = (genes_mantidos3 / genes_totais3) * 100
+                                    print(f"{porcentagem:.2f}% dos genes se mantiveram entre as gerações na característica 3.")
+                                else:
+                                    print("Nenhum gene foi mantido na característica 3.")
+                                    
+
+
+                            
 
                         else:
                             print("Erro, opção inválida")
