@@ -150,7 +150,33 @@ while True:
             # Código da opção 1
 
         elif resp == 2:
-            pass
+            print("""
+            Bonobos (Pan paniscus)
+                  
+                              Visão geral:
+                  - Bonobo ou macaco-pigmeu;
+                  - Rio Zaire, na República Democrática do Congo;
+                  - Pacifícos e altamente sociais;
+                  - Comportamento sexual;
+                  - Disponibilidade de plantas.
+
+                              Reprodução:
+                  - As fêmeas têm ciclos estrais e entram em cio ativo;
+                  - Gestação dura cerca de 8 meses;
+                  - Relações hetereossexuais e homossexuais;
+                  - resolvem conflitos; Fortalecimento de laços sociais; 
+                    Reduzir o estresse.
+                  
+                              Curiosidades:
+                  - 98,7% do DNA igual ao dos humanos;
+                  - Comunidade matriaracal;
+                  - Brincalões e inteligentes;
+                  - Empatia -> Compartilha alimento;
+                  - Risco de extinção;
+                  - Automedicação -> Zoofarmacognosia.
+
+
+""")
             # Código da opção 2
         
         elif resp == 3:
