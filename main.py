@@ -17,7 +17,7 @@ valorTaxaSelecao = 80
 contadorReproducaoFalha = 0
 popnewage = []
 novaGeracao = []
-
+melhor_valor = 0
 
 
 def geracaoIndividuo():
@@ -116,14 +116,22 @@ def mutacaoGenetica(individuo):
     return individuo
 
 def avaliacaoPopulacao(populacao): ######
-    adaptado = 0
-    for individuo in populacao:
-        somatorio = sum(individuo.caracteristica1)
-        if somatorio > adaptado:
-            adaptado = somatorio
-    return adaptado * (valorTaxaSelecao / 100)
+    melhor_individuo = None
+    melhor_valor = float('-inf')
 
-    #Mexer nessa lógica
+    for individuo in populacao:
+        soma_total = (
+            sum(individuo.caracteristica1) +
+            sum(individuo.caracteristica2) +
+            sum(individuo.caracteristica3)
+        )
+
+        if soma_total > melhor_valor:
+            melhor_valor = soma_total
+            melhor_individuo = individuo
+
+    return melhor_individuo, melhor_valor * (valorTaxaSelecao / 100)
+    
 
 
 
@@ -230,23 +238,23 @@ while True:
             
             
             
+          
             for i in range(0, len(populacao) - 1):
                 par1 = populacao[i]
-                par2 = populacao[i+1]
-                ind3 = None
-                if par1.sexo != par2.sexo:
+                par2 = populacao[i + 1]
 
+                if par1.sexo != par2.sexo:
                     ind3 = reproducaoIndividuos(par1, par2)
                     ind3 = mutacaoGenetica(ind3)
 
-
+                    valor_ind3 = sum(ind3.caracteristica1) + sum(ind3.caracteristica2) + sum(ind3.caracteristica3)
                     
-                    if sum(ind3.caracteristica1) >= avaliacaoPopulacao(populacao) and len(popnewage) < tamanhoPopNewAge:  # Mudar essa lógica e integrar com as novas características
+
+        
+                    if valor_ind3 >= melhor_valor and len(popnewage) < tamanhoPopNewAge:
                         popnewage.append(ind3)
-
-                else: contadorReproducaoFalha += 1
-
-
+                else:
+                    contadorReproducaoFalha += 1
 
             while True:
                     try:
