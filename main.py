@@ -20,6 +20,23 @@ novaGeracao = []
 melhor_valor = 0
 
 
+def limpar():
+    print("digite enter para continuar!")
+    input()
+    s = os.name
+    if s == "nt":
+        os.system('cls')
+    else:
+        os.system('clear')
+def limpar2():
+    
+    s = os.name
+    if s == "nt":
+        os.system('cls')
+    else:
+        os.system('clear')
+
+
 def geracaoIndividuo():
     individuo = Especie("Pan Paniscus",choice(["M","F"])) 
 
@@ -139,8 +156,9 @@ def avaliacaoPopulacao(populacao): ######
 
 # ADICIONAR WHILE TRUE COM TRY EXCEPT
 
-while True:
 
+limpar()
+while True:
     print("Bem vindo ao DNApice-II")
 
     try:
@@ -151,6 +169,7 @@ while True:
         3 - Como funciona o programa?
         4 - Iniciar reprodução
         """))
+        limpar2()
 
 
         if resp == 1:
@@ -185,10 +204,16 @@ while True:
 
 
 """)
+            limpar()
             # Código da opção 2
         
         elif resp == 3:
-            print(""" 🧬 O DNApice-II é um programa que simula, de forma bem simplificada, o processo de reprodução e evolução genética de uma espécie fictícia chamada Pan Paniscus (o nome científico do bonobo, um tipo de macaco).  Ele cria uma pequena população de indivíduos, cada um com suas características genéticas, e depois faz com que eles se reproduzam, gerando novos indivíduos com mistura dos genes dos “pais”. Durante esse processo, o programa também simula a mutação genética, ou seja, pequenas mudanças aleatórias que podem acontecer no DNA de um indivíduo — o que imita o que ocorre na natureza.
+            print(""" 🧬 O DNApice-II é um programa que simula, de forma bem simplificada, o processo de reprodução e evolução genética de uma espécie fictícia chamada 
+                    Pan Paniscus (o nome científico do bonobo, um tipo de macaco). 
+                    Ele cria uma pequena população de indivíduos, cada um com suas características genéticas, 
+                    e depois faz com que eles se reproduzam, gerando novos indivíduos com mistura dos genes dos “pais”. 
+                    Durante esse processo, o programa também simula a mutação genética, ou seja, 
+                    pequenas mudanças aleatórias que podem acontecer no DNA de um indivíduo — o que imita o que ocorre na natureza.
 
             ⚙ Etapas principais do programa
 
@@ -201,10 +226,13 @@ while True:
 
                 2-Reprodução
                     O programa tenta formar pares de indivíduos de sexos diferentes.
-                    Cada par “gera um novo indivíduo”, combinando os genes dos pais — geralmente escolhendo o melhor gene de cada par (como se pegasse o mais forte de cada um).
+                    Cada par “gera um novo indivíduo”, combinando os genes dos pais — 
+                    geralmente escolhendo o melhor gene de cada par (como se pegasse o mais forte de cada um).
 
                 3-Mutação genética
-                    Às vezes (com uma certa chance), um dos genes do novo indivíduo muda para outro número aleatório — isso representa uma mutação, que pode deixar o novo indivíduo mais ou menos adaptado.
+                    Às vezes (com uma certa chance), 
+                    um dos genes do novo indivíduo muda para outro número aleatório — 
+                    isso representa uma mutação, que pode deixar o novo indivíduo mais ou menos adaptado.
                     Avaliação dos indivíduos
                     O programa soma os valores dos genes de cada indivíduo para medir quem é o mais adaptado (ou mais forte).
                     Só os novos indivíduos com características boas o suficiente são considerados selecionados para continuar.
@@ -217,20 +245,24 @@ while True:
                     Ou a lista da população inicial.
 
                 💡 Em resumo
-                  O DNApice-II é uma simulação simples de evolução biológica.
-                  Ele mostra como reprodução, seleção natural e mutação genética podem mudar uma população ao longo do tempo, mesmo que de forma bem simbólica e usando números em vez de DNA real.  
+                    O DNApice-II é uma simulação simples de evolução biológica.
+                    Ele mostra como reprodução, seleção natural e mutação genética podem mudar uma população ao longo do tempo, 
+                  
+                    mesmo que de forma bem simbólica e usando números em vez de DNA real.  
 
         """)
+            limpar()
 
         elif resp == 4:
 
             tamanhoPopulacao = int(input("Qual será o tamanho da população inicial?"))
             tamanhoPopNewAge = int(input("Quantos indivíduos poderão fazer parte dos selecionados?"))
+            limpar2()
 
             if tamanhoPopNewAge > tamanhoPopulacao:
                 print("ERRO! O NÚMERO DE INDIVÍDUOS SELECIONADOS NÃO PODE SER MAIOR QUE A POPULAÇÃO TOTAL")
+                limpar()
                 break
-            
 
 
             populacao = [geracaoIndividuo() for i in range(0, tamanhoPopulacao)]
@@ -266,6 +298,7 @@ while True:
                         4 - Mostrar a população inicial
                         6- Taxa de manutenção genética
                         5- Sair                     """))
+                        limpar2()
                     
                         if resp2 == 1:
                             
@@ -286,15 +319,15 @@ while True:
                                     print(f"Característica 3: {individuo.caracteristica3}")
                                     print(f"Por isso, a cor do seu pelo é {c3[individuo.caracteristica3[0]]}")
 
-                                # Adicionar limpa tela e etc
+                                limpar()
                         
                         elif resp2 == 2:
                             print(f"O número de reproduções que falharam foi: {contadorReproducaoFalha}")
-                            # Adicionar limpa tela e etc
 
+                            limpar()
                         elif resp2 == 3:
                             print(f"O número de mutações que ocorreram foi: {contadorMutacoes}")
-                            # Adicionar limpa tela e etc
+                            limpar()
 
                         elif resp2 == 4:
                             for individuo in populacao:
@@ -310,8 +343,11 @@ while True:
                                     print(f"Por isso, a cor do seu pelo é {c3[individuo.caracteristica3[0]]}")
                                 
                                     print()
+                                    limpar()
                         elif resp2 == 5:
                             print("Saindo...")
+                            time.sleep(2)
+                            limpar2()
                             break
 
                         
@@ -320,6 +356,7 @@ while True:
     
                             if not popnewage or not populacao:
                                 print("Erro: É necessário ter uma população e uma nova geração para calcular a taxa genética.")
+                                limpar()
                             else:
                                 genes_mantidos1 = genes_totais1 = 0
                                 genes_mantidos2 = genes_totais2 = 0
@@ -352,20 +389,26 @@ while True:
                                 if genes_totais1 > 0:
                                     porcentagem = (genes_mantidos1 / genes_totais1) * 100
                                     print(f"{porcentagem:.2f}% dos genes se mantiveram entre as gerações na característica 1.")
+                                    limpar()
                                 else:
                                     print("Nenhum gene foi mantido na característica 1.")
+                                    limpar()
 
                                 if genes_totais2 > 0:
                                     porcentagem = (genes_mantidos2 / genes_totais2) * 100
                                     print(f"{porcentagem:.2f}% dos genes se mantiveram entre as gerações na característica 2.")
+                                    limpar()
                                 else:
                                     print("Nenhum gene foi mantido na característica 2.")
+                                    limpar()
 
                                 if genes_totais3 > 0:
                                     porcentagem = (genes_mantidos3 / genes_totais3) * 100
                                     print(f"{porcentagem:.2f}% dos genes se mantiveram entre as gerações na característica 3.")
+                                    limpar()
                                 else:
                                     print("Nenhum gene foi mantido na característica 3.")
+                                    limpar()
                                     
 
 
@@ -373,20 +416,23 @@ while True:
 
                         else:
                             print("Erro, opção inválida")
+                            limpar()
 
 
 
                     except ValueError:
                         print("Erro: Digite um número válido")
                         print("Limpando a tela...")
-                        time.sleep(3) 
+                        time.sleep(3)
+                        limpar2()
                         # Será que seria melhor usar um input() vazio para limpar a tela?
-                        os.system("cls")
+                        
                         # Verificar o sistema operacional para apagar
 
 
         else:  
-            print("Erro, opção inválida")             
+            print("Erro, opção inválida")
+            limpar()           
                     
                     
 
@@ -403,7 +449,7 @@ while True:
         print("Erro: Digite um número válido")
         print("Limpando a tela...")
         time.sleep(3)
-        os.system("cls")
+        limpar2()
 
     
 
